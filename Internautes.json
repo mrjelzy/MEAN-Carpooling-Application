@@ -9,10 +9,10 @@
       "numImmatriculation": "AB-123-CD"
     },
     {
-      "email": "jane.doe@example.com",
+      "email": "marry.doe@example.com",
       "motDePasse": "secret123",
       "nom": "Doe",
-      "prenom": "Jane",
+      "prenom": "Marry",
       "telephone": "06 98 76 54 32",
       "numPermis": "0987654321",
       "numImmatriculation": "EF-456-GH"
@@ -31,7 +31,7 @@
       "motDePasse": "mypassword",
       "nom": "Jones",
       "prenom": "Alice",
-      "telephone": "06 98 76 54 32",
+      "telephone": "06 99 76 54 32",
       "numPermis": "2468013579",
       "numImmatriculation": "KL-789-MN"
     }

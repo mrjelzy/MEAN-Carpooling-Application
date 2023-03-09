@@ -2,71 +2,81 @@
     {
         "villeDépart": "Paris",
         "villeArrivée": "Lyon",
-        "date": "2023-04-01",
-        "email": "alice@example.com",
-        "nbPlaces": 2
+        "date": "230401",
+        "email": "alice.jones@example.com",
+        "nbPlaces": 2,
+        "passagers":[]
     },
     {
         "villeDépart": "Marseille",
         "villeArrivée": "Nice",
-        "date": "2023-03-15",
-        "email": "bob@example.com",
-        "nbPlaces": 3
+        "date": "230315",
+        "email": "john.doe@example.com",
+        "nbPlaces": 3,
+        "passagers":[]
     },
     {
         "villeDépart": "Bordeaux",
         "villeArrivée": "Toulouse",
-        "date": "2023-03-20",
-        "email": "charlie@example.com",
-        "nbPlaces": 1
+        "date": "230320",
+        "email": "john.doe@example.com",
+        "nbPlaces": 1,
+        "passagers":[]
     },
     {
         "villeDépart": "Nantes",
         "villeArrivée": "Rennes",
-        "date": "2023-03-25",
-        "email": "david@example.com",
-        "nbPlaces": 4
+        "date": "230325",
+        "email": "marry.doe@example.com",
+        "nbPlaces": 4,
+        "passagers":[]
     },
     {
         "villeDépart": "Strasbourg",
         "villeArrivée": "Mulhouse",
-        "date": "2023-04-02",
-        "email": "emily@example.com",
-        "nbPlaces": 2
+        "date": "230402",
+        "email": "bob.smith@example.com",
+        "nbPlaces": 2,
+        "passagers":[]
     },
     {
         "villeDépart": "Lille",
         "villeArrivée": "Bruxelles",
-        "date": "2023-04-10",
-        "email": "francois@example.com",
-        "nbPlaces": 3
+        "date": "230410",
+        "email": "marry.doe@example.com",
+        "nbPlaces": 3,
+        "passagers":[]
     },
     {
         "villeDépart": "Rouen",
         "villeArrivée": "Le Havre",
-        "date": "2023-03-18",
-        "email": "gabriel@example.com",
-        "nbPlaces": 2
+        "date": "230318",
+        "email": "bob.smith@example.com",
+        "nbPlaces": 2,
+        "passagers":[]
     },
     {
         "villeDépart": "Grenoble",
         "villeArrivée": "Annecy",
-        "date": "2023-04-05",
-        "email": "hugo@example.com",
-        "nbPlaces": 1
+        "date": "230405",
+        "email": "marry.doe@example.com",
+        "nbPlaces": 1,
+        "passagers":[]
     },
     {
         "villeDépart": "Montpellier",
         "villeArrivée": "Perpignan",
-        "date": "2023-03-22",
-        "email": "isabelle@example.com",
-        "nbPlaces": 4
+        "date": "230322",
+        "email": "alice.jones@example.com",
+        "nbPlaces": 4,
+        "passagers":[]
     },
     {
         "villeDépart": "Nîmes",
         "villeArrivée": "Avignon",
-        "date": "2023-04-12",
-        "email": "julien@example.com",
-        "nbPlaces": 3
+        "date": "230412",
+        "email": "marry.doe@example.com",
+        "nbPlaces": 3,
+        "passagers":[]
     }
 ]

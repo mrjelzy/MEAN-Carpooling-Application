@@ -1,0 +1,72 @@
+[
+    {
+        "villeDépart": "Paris",
+        "villeArrivée": "Lyon",
+        "date": "2023-04-01",
+        "email": "alice@example.com",
+        "nbPlaces": 2
+    },
+    {
+        "villeDépart": "Marseille",
+        "villeArrivée": "Nice",
+        "date": "2023-03-15",
+        "email": "bob@example.com",
+        "nbPlaces": 3
+    },
+    {
+        "villeDépart": "Bordeaux",
+        "villeArrivée": "Toulouse",
+        "date": "2023-03-20",
+        "email": "charlie@example.com",
+        "nbPlaces": 1
+    },
+    {
+        "villeDépart": "Nantes",
+        "villeArrivée": "Rennes",
+        "date": "2023-03-25",
+        "email": "david@example.com",
+        "nbPlaces": 4
+    },
+    {
+        "villeDépart": "Strasbourg",
+        "villeArrivée": "Mulhouse",
+        "date": "2023-04-02",
+        "email": "emily@example.com",
+        "nbPlaces": 2
+    },
+    {
+        "villeDépart": "Lille",
+        "villeArrivée": "Bruxelles",
+        "date": "2023-04-10",
+        "email": "francois@example.com",
+        "nbPlaces": 3
+    },
+    {
+        "villeDépart": "Rouen",
+        "villeArrivée": "Le Havre",
+        "date": "2023-03-18",
+        "email": "gabriel@example.com",
+        "nbPlaces": 2
+    },
+    {
+        "villeDépart": "Grenoble",
+        "villeArrivée": "Annecy",
+        "date": "2023-04-05",
+        "email": "hugo@example.com",
+        "nbPlaces": 1
+    },
+    {
+        "villeDépart": "Montpellier",
+        "villeArrivée": "Perpignan",
+        "date": "2023-03-22",
+        "email": "isabelle@example.com",
+        "nbPlaces": 4
+    },
+    {
+        "villeDépart": "Nîmes",
+        "villeArrivée": "Avignon",
+        "date": "2023-04-12",
+        "email": "julien@example.com",
+        "nbPlaces": 3
+    }
+]

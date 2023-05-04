@@ -1,0 +1,15 @@
+- GXCookie pour le login
+
+Liste des routes :
+    - connexion
+    - inscription
+    - modifier profil
+    - creation trajet
+    - recherche trajet
+    - supprimer un trajet
+    - inscription trajet
+    - temps_de_trajet
+
+Collections :
+    - covoiturages
+    - internautes

@@ -1,38 +1,38 @@
 [
-    {
-      "email": "john.doe@example.com",
-      "motDePasse": "motdepasse123",
-      "nom": "Doe",
-      "prenom": "John",
-      "telephone": "06 12 34 56 78",
-      "numPermis": "1234567890",
-      "numImmatriculation": "AB-123-CD"
-    },
-    {
-      "email": "marry.doe@example.com",
-      "motDePasse": "secret123",
-      "nom": "Doe",
-      "prenom": "Marry",
-      "telephone": "06 98 76 54 32",
-      "numPermis": "0987654321",
-      "numImmatriculation": "EF-456-GH"
-    },
-    {
-      "email": "bob.smith@example.com",
-      "motDePasse": "password123",
-      "nom": "Smith",
-      "prenom": "Bob",
-      "telephone": "07 12 34 56 78",
-      "numPermis": "1357986420",
-      "numImmatriculation": "GH-456-IJ"
-    },
-    {
-      "email": "alice.jones@example.com",
-      "motDePasse": "mypassword",
-      "nom": "Jones",
-      "prenom": "Alice",
-      "telephone": "06 99 76 54 32",
-      "numPermis": "2468013579",
-      "numImmatriculation": "KL-789-MN"
-    }
+  {
+    "email": "john.doe@example.com",
+    "motDePasse": "motdepasse123",
+    "nom": "Doe",
+    "prenom": "John",
+    "telephone": "06 12 34 56 78",
+    "numPermis": "1234567890",
+    "numImmatriculation": "AB-123-CD"
+  },
+  {
+    "email": "marry.doe@example.com",
+    "motDePasse": "secret123",
+    "nom": "Doe",
+    "prenom": "Marry",
+    "telephone": "06 98 76 54 32",
+    "numPermis": "0987654321",
+    "numImmatriculation": "EF-456-GH"
+  },
+  {
+    "email": "bob.smith@example.com",
+    "motDePasse": "password123",
+    "nom": "Smith",
+    "prenom": "Bob",
+    "telephone": "07 12 34 56 78",
+    "numPermis": "1357986420",
+    "numImmatriculation": "GH-456-IJ"
+  },
+  {
+    "email": "alice.jones@example.com",
+    "motDePasse": "mypassword",
+    "nom": "Jones",
+    "prenom": "Alice",
+    "telephone": "06 99 76 54 32",
+    "numPermis": "2468013579",
+    "numImmatriculation": "KL-789-MN"
+  }
 ]

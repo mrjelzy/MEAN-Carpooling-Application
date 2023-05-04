@@ -5,7 +5,10 @@
         "date": "230401",
         "email": "alice.jones@example.com",
         "nbPlaces": 2,
-        "passagers":["john.doe@example.com", "marry.doe@example.com"]
+        "passagers":["john.doe@example.com", "marry.doe@example.com"],
+        "prix": 50,
+        "heureDepart": "10:00",
+        "heureArrive": null
     },
     {
         "villeDépart": "Marseille",
@@ -13,7 +16,10 @@
         "date": "230315",
         "email": "john.doe@example.com",
         "nbPlaces": 3,
-        "passagers":[]
+        "passagers":[],
+        "prix": 25,
+        "heureDepart": "14:30",
+        "heureArrive": null
     },
     {
         "villeDépart": "Bordeaux",
@@ -21,7 +27,10 @@
         "date": "230320",
         "email": "john.doe@example.com",
         "nbPlaces": 1,
-        "passagers":[]
+        "passagers":[],
+        "prix": 30,
+        "heureDepart": "08:45",
+        "heureArrive": null
     },
     {
         "villeDépart": "Nantes",
@@ -29,7 +38,10 @@
         "date": "230325",
         "email": "marry.doe@example.com",
         "nbPlaces": 4,
-        "passagers":["bob.smith@example.com", "john.doe@example.com"]
+        "passagers":["bob.smith@example.com", "john.doe@example.com"],
+        "prix": 15,
+        "heureDepart": "11:20",
+        "heureArrive": null
     },
     {
         "villeDépart": "Strasbourg",
@@ -37,7 +49,10 @@
         "date": "230402",
         "email": "bob.smith@example.com",
         "nbPlaces": 2,
-        "passagers":["alice.jones@example.com", "john.doe@example.com"]
+        "passagers":["alice.jones@example.com", "john.doe@example.com"],
+        "prix": 40,
+        "heureDepart": "09:15",
+        "heureArrive": null
     },
     {
         "villeDépart": "Lille",
@@ -45,7 +60,10 @@
         "date": "230410",
         "email": "marry.doe@example.com",
         "nbPlaces": 3,
-        "passagers":["alice.jones@example.com"]
+        "passagers":["alice.jones@example.com"],
+        "prix": 20,
+        "heureDepart": "13:00",
+        "heureArrive": null
     },
     {
         "villeDépart": "Rouen",
@@ -53,7 +71,10 @@
         "date": "230318",
         "email": "bob.smith@example.com",
         "nbPlaces": 2,
-        "passagers":["john.doe@example.com", "marry.doe@example.com"]
+        "passagers":["john.doe@example.com", "marry.doe@example.com"],
+        "prix": 35,
+        "heureDepart": "16:45",
+        "heureArrive": null
     },
     {
         "villeDépart": "Grenoble",
@@ -61,7 +82,10 @@
         "date": "230405",
         "email": "marry.doe@example.com",
         "nbPlaces": 1,
-        "passagers":["bob.smith@example.com", "john.doe@example.com"]
+        "passagers":["bob.smith@example.com", "john.doe@example.com"],
+        "prix": 45,
+        "heureDepart": "12:00",
+        "heureArrive": null
     },
     {
         "villeDépart": "Montpellier",
@@ -69,7 +93,10 @@
         "date": "230322",
         "email": "alice.jones@example.com",
         "nbPlaces": 4,
-        "passagers":["marry.doe@example.com", "bob.smith@example.com"]
+        "passagers":["marry.doe@example.com", "bob.smith@example.com"],
+        "prix": 15,
+        "heureDepart": "11:30",
+        "heureArrive": null
     },
     {
         "villeDépart": "Nîmes",
@@ -77,6 +104,9 @@
         "date": "230412",
         "email": "marry.doe@example.com",
         "nbPlaces": 3,
-        "passagers":["bob.smith@example.com"]
+        "passagers":["bob.smith@example.com"],
+        "prix": 10,
+        "heureDepart": "15:00",
+        "heureArrive": null
     }
 ]

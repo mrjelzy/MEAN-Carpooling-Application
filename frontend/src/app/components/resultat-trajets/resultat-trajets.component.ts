@@ -9,6 +9,7 @@ import { TrajetService } from 'src/app/services/trajet.service';
 })
 export class ResultatTrajetsComponent implements OnInit {
   trajets!: Trajet[];
+  trajetsRecus: boolean = false;
 
   constructor(private trajetService: TrajetService){}
 
@@ -16,6 +17,7 @@ export class ResultatTrajetsComponent implements OnInit {
     this.trajetService.getTrajets().subscribe(
       (trajets) => {
         this.trajets = trajets;
+        this.trajetsRecus = true;
     });
   }
 }

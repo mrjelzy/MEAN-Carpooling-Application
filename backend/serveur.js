@@ -81,8 +81,8 @@ async function main() //principe de promesse
 		});
 
 		// AJOUTE UN TRAJET
-		app.post("/trajet", async (req, res) => {
-			console.log("/trajet");
+		app.post("/add-trajet", async (req, res) => {
+			console.log("/add-trajet");
 			let document = await db.collection("trajets").find(req.body).toArray();
 			if( document.length == 1){
 				res.json({"resultat" : 0, "message": "Le trajet n'est pas correct"});
@@ -93,22 +93,9 @@ async function main() //principe de promesse
 			}
 		});
 
-		// AJOUTE UN UTILISATEUR
-		app.post("/utilisateur", async (req,res) => {
-			console.log("/inscription de ", req.body);
-			let document = await db.collection("utilisateurs").find(req.body).toArray();
-			if( document.length == 1){
-				res.json({"resultat" : 0, "message": "utilisateur déjà existant"});
-			}
-			else{
-				await db.collection("utilisateurs").insertOne(req.body);
-				res.json({"resultat" : 1, "message": "utilisateur inscrit"});
-			}
-		});
-
 		//AJOUTE UN UTILISATEURS A UN TRAJET
-		app.patch("/trajet/:id", async (req, res) => {
-			console.log("/trajet/" + req.params.id);
+		app.patch("/add-passager/:id", async (req, res) => {
+			console.log("/add-passager/" + req.params.id);
 		
 			try {
 			// Mettre à jour le trajet qui correspond à l'ID fourni dans la requête avec l'email présent dans le request
@@ -137,9 +124,9 @@ async function main() //principe de promesse
 			}
 		});
 
-		//AJOUTE UNE HEURE D'ARRIVEE A UN TRAJET
-		app.patch("/trajettt/:id", async (req, res) => {
-			console.log("/trajet/" + req.params.id);
+		//TERMINE UN TRAJET
+		app.patch("/end-trajet/:id", async (req, res) => {
+			console.log("/end-trajet/" + req.params.id);
 		
 			try {
 			// Mettre à jour le trajet qui correspond à l'ID fourni dans la requête avec l'heure d'arivée présent dans le request
@@ -169,8 +156,8 @@ async function main() //principe de promesse
 		});
 
 		// SUPPRIME UN TRAJET EN FONCTION DE SON _ID
-		app.delete("/trajet/:id", async (req, res) => {
-			console.log("/trajet/" + req.params.id);
+		app.delete("delete-trajet/:id", async (req, res) => {
+			console.log("/delete-trajet/" + req.params.id);
 		
 			try {
 			// Supprimer l'objet de la collection "trajets" qui correspond à l'ID fourni dans la requête
@@ -199,8 +186,8 @@ async function main() //principe de promesse
 		});
 
 		// SUPPRIME UN UTILISATEUR EN FONCTION DE SON _ID
-		app.delete("/utilisateur/:id", async (req, res) => {
-			console.log("/utilisateur/" + req.params.id);
+		app.delete("/delete-utilisateur/:id", async (req, res) => {
+			console.log("/delete-utilisateur/" + req.params.id);
 		
 			try {
 			// Supprimer l'objet de la collection "trajets" qui correspond à l'ID fourni dans la requête
@@ -228,22 +215,9 @@ async function main() //principe de promesse
 			}
 		});
 
-		// RETOURNE RESULTAT=0 SI L'UTILISATEUR EXISTE, 1 SINON
-		app.post("/connexion", async (req,res) => {
-			console.log("/connexion de ", req.body);
-			let document = await db.collection("utilisateurs").find(req.body).toArray();
-			if( document.length == 1){
-				res.json({"resultat" : 0, "message": "Utilisateur déjà existant"});
-			}
-			else{
-				// AJOUTER DANS LES COOKIES
-				res.json({"resultat": 1, "message": "Authentification réussie"});
-			}
-		});
-
 		// MODIFIE UN UTILISATEUR
-		app.patch("/utilisateur/:id", async (req, res) => {
-			console.log("/utilisateur/" + req.params.id);
+		app.patch("/patch-utilisateur/:id", async (req, res) => {
+			console.log("/patch-utilisateur/" + req.params.id);
 			const utilisateur = req.body;
 		
 			try {
@@ -269,6 +243,32 @@ async function main() //principe de promesse
 				resultat: 0,
 				message: "Erreur lors de la modification de l'utilisateur",
 			});
+			}
+		});
+
+		// AJOUTE UN UTILISATEUR
+		app.post("/add-utilisateur", async (req,res) => {
+			console.log("/inscription de ", req.body);
+			let document = await db.collection("utilisateurs").find(req.body).toArray();
+			if( document.length == 1){
+				res.json({"resultat" : 0, "message": "utilisateur déjà existant"});
+			}
+			else{
+				await db.collection("utilisateurs").insertOne(req.body);
+				res.json({"resultat" : 1, "message": "utilisateur inscrit"});
+			}
+		});
+
+		// RETOURNE RESULTAT=0 SI L'UTILISATEUR EXISTE, 1 SINON
+		app.post("/connexion", async (req,res) => {
+			console.log("/connexion de ", req.body);
+			let document = await db.collection("utilisateurs").find(req.body).toArray();
+			if( document.length == 1){
+				res.json({"resultat" : 0, "message": "Utilisateur déjà existant"});
+			}
+			else{
+				// AJOUTER DANS LES COOKIES
+				res.json({"resultat": 1, "message": "Authentification réussie"});
 			}
 		});
 

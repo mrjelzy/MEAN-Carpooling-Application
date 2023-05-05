@@ -7,7 +7,10 @@ var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017";
 app.listen(8888);
 console.log("Serveur démarré")
+
 const client = new MongoClient(url);
+const { ObjectId } = require('mongodb');
+
 
 async function main() //principe de promesse
 {
@@ -25,20 +28,21 @@ async function main() //principe de promesse
 		return db;
 	})
 	.then((db) => {
-		// Retourne la liste des utilisateurs
+		// RETOURNE LA LISTE DES UTILISATEURS
 		app.get("/utilisateurs", async (req, res) => {
 			console.log("/utilisateurs");
 			let documents = await db.collection("utilisateurs").find().toArray();
 			res.json(documents);
 		});
 
+		// RETOURNE LA LISTE DES TRAJETS
 		app.get("/trajets", async (req, res) => {
 			console.log("/trajets");
 			let documents = await db.collection("trajets").find().toArray();
 			res.json(documents);
 		});
 
-		// Retourne la liste des trajets suivant des critères
+		// RETOURNE LA LISTE DES TRAJETS SUIVANTS DES CRITERES
 		app.get("/trajets/:villeD/:villeA/:date/:prixMax", async (req, res) => {
 			console.log("/trajets:"+req.params.villeD+":"+req.params.villeA+":"+req.params.date+":"+req.params.prixMax);
 			let documents = await db.collection("trajets").find({
@@ -59,20 +63,93 @@ async function main() //principe de promesse
 			
 		});
 
-		// Ajoute un trajets
-		app.post("/trajet:", async (req, res) => {
+		// AJOUTE UN TRAJET
+		app.post("/trajet", async (req, res) => {
 			console.log("/trajet");
 			let document = await db.collection("trajets").find(req.body).toArray();
+			if( document.length == 1){
+				res.json({"resultat" : 0, "message": "Le trajet n'est pas correct"});
+			}
+			else{
+				await db.collection("trajets").insertOne(req.body);
+				res.json({"resultat" : 1, "message": "Nouveau trajet ajouté !"});
+			}
+		});
+
+		// AJOUTE UN UTILISATEUR
+		app.post("/utilisateur", async (req,res) => {
+			console.log("/inscription de ", req.body);
+			let document = await db.collection("utilisateurs").find(req.body).toArray();
 			if( document.length == 1){
 				res.json({"resultat" : 0, "message": "utilisateur déjà existant"});
 			}
 			else{
-				await db.collection("trajets").insertOne(req.body);
-				res.json({"resultat" : 1, "message": "trajet ajouté inscrit"});
+				await db.collection("utilisateurs").insertOne(req.body);
+				res.json({"resultat" : 1, "message": "utilisateur inscrit"});
 			}
 		});
 
-		// Retourne resultat=0 si l'utilisateur existe déjà, 1 sinon
+		// SUPPRIME UN TRAJET EN FONCTION DE SON _ID
+		app.delete("/trajet/:id", async (req, res) => {
+			console.log("/trajet/" + req.params.id);
+		
+			try {
+			// Supprimer l'objet de la collection "trajets" qui correspond à l'ID fourni dans la requête
+			const result = await db
+				.collection("trajets")
+				.deleteOne({ _id: new ObjectId(req.params.id) });
+		
+			if (result.deletedCount === 1) {
+				res.json({
+					resultat: 1,
+					message: "Trajet supprimé",
+				});
+			} else {
+				res.json({
+					resultat: 0,
+					message: "Aucun trajet n'a été supprimé",
+				});
+			}
+			} catch (error) {
+				console.error(error);
+				res.status(500).json({
+					resultat: 0,
+					message: "Erreur lors de la suppression du trajet",
+				});
+			}
+		});
+
+		// SUPPRIME UN UTILISATEUR EN FONCTION DE SON _ID
+		app.delete("/utilisateur/:id", async (req, res) => {
+			console.log("/utilisateur/" + req.params.id);
+		
+			try {
+			// Supprimer l'objet de la collection "trajets" qui correspond à l'ID fourni dans la requête
+			const result = await db
+				.collection("utilisateurs")
+				.deleteOne({ _id: new ObjectId(req.params.id) });
+		
+			if (result.deletedCount === 1) {
+				res.json({
+					resultat: 1,
+					message: "Utilisateur supprimé",
+				});
+			} else {
+				res.json({
+					resultat: 0,
+					message: "Aucun utilisateur n'a été supprimé",
+				});
+			}
+			} catch (error) {
+				console.error(error);
+				res.status(500).json({
+					resultat: 0,
+					message: "Erreur lors de la suppression de l'utilisateur",
+				});
+			}
+		});
+
+		// RETOURNE RESULTAT=0 SI L'UTILISATEUR EXISTE DEJA, 1 SINON
 		app.post("/connexion", async (req,res) => {
 			console.log("/connexion de ", req.body);
 			let document = await db.collection("utilisateurs").find(req.body).toArray();
@@ -85,28 +162,34 @@ async function main() //principe de promesse
 			}
 		});
 
-		//
-		app.post("/inscription", async (req,res) => {
-			console.log("/inscription de ", req.body);
-			let document = await db.collection("utilisateurs").find(req.body).toArray();
-			if( document.length == 1){
-				res.json({"resultat" : 0, "message": "utilisateur déjà existant"});
+		// MODIFIE UN UTILISATEUR
+		app.patch("/utilisateur/:id", async (req, res) => {
+			console.log("/utilisateur/" + req.params.id);
+			const utilisateur = req.body;
+		
+			try {
+			// Mettre à jour l'utilisateur dans la collection "utilisateurs" qui correspond à l'ID fourni dans la requête
+			const result = await db
+				.collection("utilisateurs")
+				.updateOne({ _id: new ObjectId(req.params.id) }, { $set: utilisateur });
+		
+			if (result.modifiedCount === 1) {
+				res.json({
+				resultat: 1,
+				message: "Utilisateur modifié",
+				});
+			} else {
+				res.json({
+				resultat: 0,
+				message: "Aucun utilisateur n'a été modifié",
+				});
 			}
-			else{
-				await db.collection("utilisateurs").insertOne(req.body);
-				res.json({"resultat" : 1, "message": "utilisateur inscrit"});
-			}
-		});
-
-		app.post("/inscription", async (req,res) => {
-			console.log("/inscription de ", req.body);
-			let document = await db.collection("utilisateurs").find(req.body).toArray();
-			if( document.length == 1){
-				res.json({"resultat" : 0, "message": "utilisateur déjà existant"});
-			}
-			else{
-				await db.collection("utilisateurs").insertOne(req.body);
-				res.json({"resultat" : 1, "message": "utilisateur inscrit"});
+			} catch (error) {
+			console.error(error);
+			res.status(500).json({
+				resultat: 0,
+				message: "Erreur lors de la modification de l'utilisateur",
+			});
 			}
 		});
 

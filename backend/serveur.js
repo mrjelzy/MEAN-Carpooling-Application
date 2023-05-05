@@ -63,6 +63,23 @@ async function main() //principe de promesse
 			
 		});
 
+		// RETOURNE UN TRAJET EN FONCTION DE L'ID
+		app.get("/trajet/:id", async (req, res) => {
+			console.log("/trajets:"+req.params.id);
+			let documents = await db.collection("trajets").find({
+				_id: new ObjectId(req.params.id),
+			}).toArray();
+
+			if( documents.length == 1)
+			{
+				res.json(documents);
+			}
+			else{
+				res.json({"resultat" : 0, "message": "Ancun trajet avec cet id"});
+			}
+			
+		});
+
 		// AJOUTE UN TRAJET
 		app.post("/trajet", async (req, res) => {
 			console.log("/trajet");
@@ -86,6 +103,68 @@ async function main() //principe de promesse
 			else{
 				await db.collection("utilisateurs").insertOne(req.body);
 				res.json({"resultat" : 1, "message": "utilisateur inscrit"});
+			}
+		});
+
+		//AJOUTE UN UTILISATEURS A UN TRAJET
+		app.patch("/trajet/:id", async (req, res) => {
+			console.log("/trajet/" + req.params.id);
+		
+			try {
+			// Mettre à jour le trajet qui correspond à l'ID fourni dans la requête avec l'email présent dans le request
+			const result = await db
+				.collection("trajets")
+				.updateOne({ _id: new ObjectId(req.params.id) },
+					{ $push: { "passagers": req.body.email } });
+		
+			if (result.modifiedCount === 1) {
+				res.json({
+				resultat: 1,
+				message: "Utilisateur ajouté au trajet",
+				});
+			} else {
+				res.json({
+				resultat: 0,
+				message: "Aucun trajet n'a été modifié",
+				});
+			}
+			} catch (error) {
+			console.error(error);
+			res.status(500).json({
+				resultat: 0,
+				message: "Erreur lors de la modification du trajet",
+			});
+			}
+		});
+
+		//AJOUTE UNE HEURE D'ARRIVEE A UN TRAJET
+		app.patch("/trajettt/:id", async (req, res) => {
+			console.log("/trajet/" + req.params.id);
+		
+			try {
+			// Mettre à jour le trajet qui correspond à l'ID fourni dans la requête avec l'heure d'arivée présent dans le request
+			const result = await db
+				.collection("trajets")
+				.updateOne({ _id: new ObjectId(req.params.id) },
+					{ $set: { "heureArrive": req.body.heureArrive } });
+		
+			if (result.modifiedCount === 1) {
+				res.json({
+					resultat: 1,
+					message: "Heure d'arivee ajouté au trajet",
+				});
+			} else {
+				res.json({
+					resultat: 0,
+					message: "Aucune heure d'arrive n'a été ajouté",
+				});
+			}
+			} catch (error) {
+			console.error(error);
+			res.status(500).json({
+				resultat: 0,
+				message: "Erreur lors de la modification du trajet",
+			});
 			}
 		});
 
@@ -149,7 +228,7 @@ async function main() //principe de promesse
 			}
 		});
 
-		// RETOURNE RESULTAT=0 SI L'UTILISATEUR EXISTE DEJA, 1 SINON
+		// RETOURNE RESULTAT=0 SI L'UTILISATEUR EXISTE, 1 SINON
 		app.post("/connexion", async (req,res) => {
 			console.log("/connexion de ", req.body);
 			let document = await db.collection("utilisateurs").find(req.body).toArray();

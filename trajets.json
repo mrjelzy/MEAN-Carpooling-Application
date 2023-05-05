@@ -1,7 +1,7 @@
 [
     {
-        "villeDépart": "Paris",
-        "villeArrivée": "Lyon",
+        "villeDepart": "Paris",
+        "villeArrive": "Lyon",
         "date": "230401",
         "email": "alice.jones@example.com",
         "nbPlaces": 2,
@@ -11,8 +11,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Marseille",
-        "villeArrivée": "Nice",
+        "villeDepart": "Marseille",
+        "villeArrive": "Nice",
         "date": "230315",
         "email": "john.doe@example.com",
         "nbPlaces": 3,
@@ -22,8 +22,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Bordeaux",
-        "villeArrivée": "Toulouse",
+        "villeDepart": "Bordeaux",
+        "villeArrive": "Toulouse",
         "date": "230320",
         "email": "john.doe@example.com",
         "nbPlaces": 1,
@@ -33,8 +33,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Nantes",
-        "villeArrivée": "Rennes",
+        "villeDepart": "Nantes",
+        "villeArrive": "Rennes",
         "date": "230325",
         "email": "marry.doe@example.com",
         "nbPlaces": 4,
@@ -44,8 +44,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Strasbourg",
-        "villeArrivée": "Mulhouse",
+        "villeDepart": "Strasbourg",
+        "villeArrive": "Mulhouse",
         "date": "230402",
         "email": "bob.smith@example.com",
         "nbPlaces": 2,
@@ -55,8 +55,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Lille",
-        "villeArrivée": "Bruxelles",
+        "villeDepart": "Lille",
+        "villeArrive": "Bruxelles",
         "date": "230410",
         "email": "marry.doe@example.com",
         "nbPlaces": 3,
@@ -66,8 +66,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Rouen",
-        "villeArrivée": "Le Havre",
+        "villeDepart": "Rouen",
+        "villeArrive": "Le Havre",
         "date": "230318",
         "email": "bob.smith@example.com",
         "nbPlaces": 2,
@@ -77,8 +77,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Grenoble",
-        "villeArrivée": "Annecy",
+        "villeDepart": "Grenoble",
+        "villeArrive": "Annecy",
         "date": "230405",
         "email": "marry.doe@example.com",
         "nbPlaces": 1,
@@ -88,8 +88,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Montpellier",
-        "villeArrivée": "Perpignan",
+        "villeDepart": "Montpellier",
+        "villeArrive": "Perpignan",
         "date": "230322",
         "email": "alice.jones@example.com",
         "nbPlaces": 4,
@@ -99,8 +99,8 @@
         "heureArrive": null
     },
     {
-        "villeDépart": "Nîmes",
-        "villeArrivée": "Avignon",
+        "villeDepart": "Nîmes",
+        "villeArrive": "Avignon",
         "date": "230412",
         "email": "marry.doe@example.com",
         "nbPlaces": 3,

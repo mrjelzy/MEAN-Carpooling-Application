@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, INJECTOR, Input, OnInit } from '@angular/core';
 import { faFire, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Trajet } from 'src/app/interfaces/Trajet';
+import { Utilisateur } from 'src/app/interfaces/Utilisateur';
+
+type TrajetAvecConducteur = { trajet: Trajet, conducteur: Utilisateur | undefined};
 
 @Component({
   selector: 'app-trajet-item',
@@ -8,15 +11,15 @@ import { Trajet } from 'src/app/interfaces/Trajet';
   styleUrls: ['./trajet-item.component.css']
 })
 export class TrajetItemComponent implements OnInit{
-  @Input() trajet!: Trajet;
+  @Input() trajetAvecConducteur !: TrajetAvecConducteur;
+  
   faFire = faFire;
   faArrowRight = faArrowRight;
 
   constructor() {
-    console.log(this.trajet);
   }
 
   ngOnInit(): void {
-    console.log(this.trajet);
+    console.log(this.trajetAvecConducteur)
   }
 }

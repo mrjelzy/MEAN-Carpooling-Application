@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trajet } from '../interfaces/Trajet';
+import { Search } from '../interfaces/Search';
 
 
 const httpOptions = {
@@ -21,6 +22,11 @@ export class TrajetService {
 
   getTrajets() : Observable<Trajet[]>{
     return this.http.get<Trajet[]>(this.apiUrl);
+  }
+
+  getTrajetsAvecFiltre(search: Search){
+    const url = `${this.apiUrl}/${search.villeDepart}/${search.villeArrive}/${search.date}`;
+    return this.http.get<Trajet[]>(url);
   }
   
 }

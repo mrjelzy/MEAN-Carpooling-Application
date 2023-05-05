@@ -3,33 +3,35 @@
         <div class="flex flex-row justify-between">
             <span>
                 <div class="gap-x-2">
-                    Alice
+                   {{ trajetAvecConducteur.conducteur?.prenom }} 
 
                     <fa-icon [icon]="faFire"></fa-icon>
                 </div>
-                <p class="font-light text-sm italic">150km/h</p>
+                <p class="font-light text-sm italic">{{ trajetAvecConducteur.conducteur?.vitMoyenne }} km/h</p>
             </span>
 
             <span>
-                <b>{{ trajet.prix }} €</b>
+                <b>{{ trajetAvecConducteur.trajet.prix }} €</b>
             </span>
         </div>
 
 
         <div class="flex flex-row gap-x-6 justify-center">
 
-            <p>{{ trajet.villeDepart }}</p>
+            <p>{{ trajetAvecConducteur.trajet.villeDepart }}</p>
 
 
             <fa-icon [icon]="faArrowRight"></fa-icon>
 
 
-            <p>{{ trajet.villeArrive }}</p>
+            <p>{{ trajetAvecConducteur.trajet.villeArrive }}</p>
 
         </div>
 
         <div class="flex flex-row justify-between items-center">
-            <p class="font-bold text-slate-600">15h30</p>
+            <p class="font-bold text-slate-600">
+                {{ trajetAvecConducteur.trajet.heureDepart }}
+            </p>
 
             <div class="bg-blue-600 text-white p-2 rounded-lg">
                 <button type="submit">Reserver</button>

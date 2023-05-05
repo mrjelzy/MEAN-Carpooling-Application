@@ -1,0 +1,12 @@
+.hero {
+    height: 40vh;
+    width: 100vw;
+    background-image: url("../../../assets/hero-home.jpg");
+    background-size: cover;
+    background-position: bottom ;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top:5rem;
+    filter: brightness(60%) saturate(60%);
+}

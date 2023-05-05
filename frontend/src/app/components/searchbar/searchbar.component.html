@@ -1,19 +1,31 @@
-<div class="mt-52 mx-80">
-<form class="border-solid border flex flex-row justify-between rounded-full">
+<form class="border-solid border flex flex-row justify-between rounded-full bg-white" (ngSubmit)="onSubmit()">
     <div class="p-4 rounded-l-full border-r">
-        <input  class="outline-none" type="text" name="depart" id="depart" placeholder="Depart">
+        <input  class="outline-none" 
+            type="text" 
+            name="depart" 
+            id="depart"
+            [(ngModel)]="depart"
+            placeholder="Depart">
     </div>
     <div class="p-4 border-r">
-        <input class="outline-none" type="text" name="arrivee" id="arrivee" placeholder="Arrivée">
+        <input class="outline-none" 
+            type="text" 
+            name="arrivee" 
+            id="arrivee" 
+            [(ngModel)]="arrivee"
+            placeholder="Arrivée">
     </div>
 
     <div class="p-4">
-        <input class="outline-none" type="date" name="date" id="date">
+        <input class="outline-none" 
+            type="date" 
+            name="date" 
+            [(ngModel)]="dateString"
+            id="date">
     </div>
     <div class="bg-red-600 text-white p-4 rounded-r-full">
-        <button type="submit">Rechercher</button>
+        <input type="submit" value="Rechercher"/>
     </div>
-
 </form>
-</div>
+
 

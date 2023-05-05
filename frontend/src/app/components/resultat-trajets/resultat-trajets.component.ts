@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Trajet } from 'src/app/interfaces/Trajet';
+import { Utilisateur } from 'src/app/interfaces/Utilisateur';
 import { TrajetService } from 'src/app/services/trajet.service';
 
+type TrajetAvecConducteur = { trajet: Trajet, conducteur: Utilisateur | undefined };
 @Component({
   selector: 'app-resultat-trajets',
   templateUrl: './resultat-trajets.component.html',
   styleUrls: ['./resultat-trajets.component.css']
 })
 export class ResultatTrajetsComponent implements OnInit {
-  trajets!: Trajet[];
-  trajetsRecus: boolean = false;
+  @Input() trajets!: Trajet[];
+  @Input() utilisateurs!: Utilisateur [];
+  @Input() trajetsAvecConducteurs!: TrajetAvecConducteur[];
 
-  constructor(private trajetService: TrajetService){}
+  constructor(){}
 
-  ngOnInit(): void{
-    this.trajetService.getTrajets().subscribe(
-      (trajets) => {
-        this.trajets = trajets;
-        this.trajetsRecus = true;
-    });
+  ngOnInit(): void {
+    this.trajetsAvecConducteurs = this.trajets
+        .map(trajet => {
+          const conducteur = this.utilisateurs.find(utilisateur => utilisateur.email === trajet.email);
+          return { trajet, conducteur };
+        })
+        .filter(({ conducteur }) => conducteur !== undefined);
   }
+
 }

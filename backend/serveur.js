@@ -33,7 +33,9 @@ async function main() //principe de promesse
 		// RETOURNE LA LISTE DES UTILISATEURS
 		app.get("/utilisateurs", async (req, res) => {
 			console.log("/utilisateurs");
-			let documents = await db.collection("utilisateurs").find().toArray();
+			let documents = await db.collection("utilisateurs")
+							.find({}, { projection: { nom : 1, prenom: 1, email:1, vitMoyenne:1 } })
+							.toArray();
 			res.json(documents);
 		});
 
@@ -45,16 +47,13 @@ async function main() //principe de promesse
 		});
 
 		// RETOURNE LA LISTE DES TRAJETS SUIVANTS DES CRITERES
-		app.get("/trajets/:villeD/:villeA/:date/:prixMax", async (req, res) => {
-			console.log("/trajets:"+req.params.villeD+":"+req.params.villeA+":"+req.params.date+":"+req.params.prixMax);
+		app.get("/trajets/:villeD/:villeA/:date", async (req, res) => {
+			console.log("/trajets:"+req.params.villeD+":"+req.params.villeA+":"+req.params.date);
 			let documents = await db.collection("trajets").find({
-				villeDépart: req.params.villeD,
-				villeArrivée: req.params.villeA,
-				date: req.params.date,
-				prix: {"$lt" : parseInt(req.params.prixMax)},
-				$expr: { $lt: [ { $size: "$passagers" }, "$nbPlaces" ] }
+				villeDepart: req.params.villeD,
+				villeArrive: req.params.villeA,
+				date: req.params.date
 			}).toArray();
-
 			if( documents.length == 1)
 			{
 				res.json(documents);

@@ -1,2 +1,5 @@
-<app-searchbar></app-searchbar>
-<app-resultat-trajets></app-resultat-trajets>
+<div class="hero">
+</div>
+<app-searchbar (onSearch)="onSearch($event)" ></app-searchbar>
+<app-resultat-trajets *ngIf="trajets utilisateurs" [trajets]="trajets" 
+                    [utilisateurs]="utilisateurs"></app-resultat-trajets>

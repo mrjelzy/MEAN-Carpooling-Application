@@ -8,6 +8,8 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { TrajetItemComponent } from './components/trajet-item/trajet-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ResultatTrajetsComponent } from './components/resultat-trajets/resultat-trajets.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { ResultatTrajetsComponent } from './components/resultat-trajets/resultat
     NavbarComponent,
     SearchbarComponent,
     TrajetItemComponent,
-    ResultatTrajetsComponent
+    ResultatTrajetsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

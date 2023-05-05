@@ -1,12 +1,7 @@
 <div class="mx-80 mt-52 ">
     <div class="font-bold text-3xl text-slate-600 text-center">Resultats</div>
     <div class="grid grid-cols-2 p-4 gap-y-8">
-        <app-trajet-item></app-trajet-item>
-        <app-trajet-item></app-trajet-item>
-        <app-trajet-item></app-trajet-item>
-        <app-trajet-item></app-trajet-item>
-        <app-trajet-item></app-trajet-item>
-        <app-trajet-item></app-trajet-item>
+        <app-trajet-item *ngFor="let trajet of trajets" [trajet]="trajet" ></app-trajet-item>
     </div>
 </div>
-
+  

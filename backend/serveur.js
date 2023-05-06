@@ -285,13 +285,42 @@ async function main() //principe de promesse
 			if( user.length == 1)
 			{
 				// Générer un jeton d'authentification (remplacer 'secret' par une clé sha ...)
-				const token = jwt.sign({ email: user.email }, 'secret');
+				const token = jwt.sign({ email: req.body.email }, 'secret');
 				// Envoyer le jeton d'authentification au client
 				res.json({ resultat: 1, message: 'Authentification réussie', token});
 			}
 			else{
 				res.json({resultat: 0, message: "Utilisateur inconnu"});
 			}
+		});
+
+		// RETOURNE UN UTILISATEUR EN FONCTION DU TOKEN
+		app.post("/utilisateur", async (req, res) => {
+			console.log("/utilisateur "+req.headers.authorization);
+
+			let tokenData
+
+			try{
+				const token = req.headers.authorization.split(' ')[1];
+				tokenData = jwt.verify(token, "secret");
+				console.log("Adresse e-mail de l'utilisateur : " + tokenData.email);
+			}
+			catch{
+				res.json({"resultat" : 0, "message": "Token d'authentification invalide"});
+			}
+
+			let documents = await db.collection("utilisateurs").findOne({
+				email: tokenData.email,
+			});
+
+			if( documents != null)
+			{
+				res.json(documents);
+			}
+			else{
+				res.json({"resultat" : 0, "message": "Ancun utilisateur avec cet email"});
+			}
+			
 		});
 
 		/* APPELS EXAMPLES

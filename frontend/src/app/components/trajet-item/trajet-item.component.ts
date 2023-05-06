@@ -12,6 +12,7 @@ type TrajetAvecConducteur = { trajet: Trajet, conducteur: Utilisateur | undefine
 })
 export class TrajetItemComponent implements OnInit{
   @Input() trajetAvecConducteur !: TrajetAvecConducteur;
+  flamme: number = 1;
   
   faFire = faFire;
   faArrowRight = faArrowRight;
@@ -21,5 +22,8 @@ export class TrajetItemComponent implements OnInit{
 
   ngOnInit(): void {
     console.log(this.trajetAvecConducteur)
-  }
+    const vitesse = this.trajetAvecConducteur.conducteur?.vitMoyenne;
+    if(vitesse)
+      this.flamme = Math.floor( vitesse / 50);
+    }
 }

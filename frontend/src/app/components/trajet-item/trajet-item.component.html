@@ -5,7 +5,10 @@
                 <div class="gap-x-2">
                    {{ trajetAvecConducteur.conducteur?.prenom }} 
 
-                    <fa-icon [icon]="faFire"></fa-icon>
+                   <span *ngFor="let i of [].constructor(flamme); let index = index">
+                    🔥
+                   </span>
+
                 </div>
                 <p class="font-light text-sm italic">{{ trajetAvecConducteur.conducteur?.vitMoyenne }} km/h</p>
             </span>

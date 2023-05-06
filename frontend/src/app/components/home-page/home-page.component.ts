@@ -21,20 +21,18 @@ export class HomePageComponent implements OnInit {
     this.utilisateurService.getUtilisateurs().subscribe(
       (utilisateurs) => {
         this.utilisateurs = utilisateurs;
-        const resultats = utilisateurs.filter(user => user.email === "john.doe@example.com");
-        console.log(resultats);
     });
 
   }
 
   onSearch(search: Search) {
-    this.trajetService.getTrajetsAvecFiltre(search).subscribe(
+   this.trajetService.getTrajetsAvecFiltre(search).subscribe(
       (trajets) => {
         this.trajets = trajets;
         console.log(trajets);
     });
 
-   /* this.trajetService.getTrajets().subscribe(
+   /*this.trajetService.getTrajets().subscribe(
       (trajets) => {
         this.trajets = trajets; 
     });*/

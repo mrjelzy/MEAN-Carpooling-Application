@@ -1,0 +1,4 @@
+<div class="flex flex-col pt-20 gap-y-6" >
+    <h2 class="text-center font-bold text-slate-600 text-xl">{{ title }}</h2>
+    <app-utilisateur-item *ngFor="let utilisateur of utilisateurs" [utilisateur]="utilisateur" ></app-utilisateur-item>
+</div>

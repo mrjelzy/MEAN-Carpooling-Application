@@ -1,0 +1,50 @@
+<div>
+    <h2 class="text-center font-bold text-slate-600 text-xl mb-10">Formulaire d'inscription</h2>
+    <form class="border-solid border flex flex-col justify-between bg-white w-96 mx-auto" (ngSubmit)="onSubmit()">
+        <input  class="p-4 border-b outline-none" 
+            type="text" 
+            name="nom" 
+            id="nom"
+            [(ngModel)]="nom"
+            placeholder="Nom">
+        <input class="p-4 border-b outline-none " 
+            type="text" 
+            name="prenom" 
+            id="prenom" 
+            [(ngModel)]="prenom"
+            placeholder="Prenom">
+    
+        <input class="p-4 border-b outline-none " 
+            type="text" 
+            name="email" 
+            id="email" 
+            [(ngModel)]="email"
+            placeholder="Email">
+    
+        <input class="p-4 border-b outline-none " 
+            type="tel" 
+            name="telephone" 
+            id="telephone" 
+            [(ngModel)]="tel"
+            placeholder="Numéro de Téléphone">
+    
+        <input class="p-4 border-b outline-none " 
+            type="password" 
+            name="motDePasse" 
+            id="motDePasse" 
+            [(ngModel)]="motDePasse"
+            placeholder="Mot De Passe">
+    
+        <input class="p-4 outline-none " 
+            type="password" 
+            name="cmotDePasse" 
+            id="cmotDePasse" 
+            [(ngModel)]="cmotDePasse"
+            placeholder="Confirmation de Mot De Passe">
+    
+        <input class="bg-blue-600 text-white p-4 " type="submit" value="S'inscrire"/>
+    </form>
+</div>
+
+
+

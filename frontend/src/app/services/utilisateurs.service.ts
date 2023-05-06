@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Utilisateur } from '../interfaces/Utilisateur';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Resultat } from '../interfaces/Resultat';
 
 
 const httpOptions = {
@@ -13,11 +14,17 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UtilisateursService {
-  private apiUrl = 'http://localhost:8888/utilisateurs';
+  private apiUrl = 'http://localhost:8888';
 
   constructor(private http: HttpClient) {}
 
   getUtilisateurs() : Observable<Utilisateur[]>{
-    return this.http.get<Utilisateur[]>(this.apiUrl);
+    const url = `${this.apiUrl}/utilisateurs`;
+    return this.http.get<Utilisateur[]>(url);
+  }
+
+  addUtilisateur(utilisateur: Utilisateur): Observable<Resultat> {
+    const url = `${this.apiUrl}/add-utilisateur`;
+    return this.http.post<Resultat>(url, utilisateur, httpOptions);
   }
 }

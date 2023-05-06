@@ -24,7 +24,7 @@ export class TrajetService {
     return this.http.get<Trajet[]>(this.apiUrl);
   }
 
-  getTrajetsAvecFiltre(search: Search){
+  getTrajetsAvecFiltre(search: Search) : Observable<Trajet[]>{
     const url = `${this.apiUrl}/${search.villeDepart}/${search.villeArrive}/${search.date}`;
     return this.http.get<Trajet[]>(url);
   }

@@ -21,7 +21,6 @@ export class TrajetItemComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.trajetAvecConducteur)
     const vitesse = this.trajetAvecConducteur.conducteur?.vitMoyenne;
     if(vitesse)
       this.flamme = Math.floor( vitesse / 50);

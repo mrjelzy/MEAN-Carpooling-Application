@@ -1,0 +1,28 @@
+<div>
+    <div *ngIf="welcome" class="flex items-center bg-red-500 text-white text-lg font-bold px-4 py-3 mb-10 w-96 mx-auto text-center" role="alert">
+        <p>Bienvenue sur le Blablacar des furieux  <b>Covoiturace</b></p>
+      </div>
+
+    <h2 class="text-center font-bold text-slate-600 text-xl mb-10">Formulaire de Connexion</h2>
+    <form class="border-solid border flex flex-col justify-between bg-white w-96 mx-auto" (ngSubmit)="onSubmit()">
+    
+        <input class="p-4 border-b outline-none " 
+            type="text" 
+            name="email" 
+            id="email" 
+            [(ngModel)]="email"
+            placeholder="Email">
+
+    
+        <input class="p-4 border-b outline-none " 
+            type="password" 
+            name="motDePasse" 
+            id="motDePasse" 
+            [(ngModel)]="motDePasse"
+            placeholder="Mot De Passe">
+    
+        <input class="bg-blue-600 text-white p-4 " type="submit" value="Se Connecter"/>
+    </form>
+</div>
+
+

@@ -1,5 +1,8 @@
 <div class="hero">
 </div>
 <app-searchbar (onSearch)="onSearch($event)" ></app-searchbar>
-<app-resultat-trajets *ngIf="trajets utilisateurs" [trajets]="trajets" 
-                    [utilisateurs]="utilisateurs"></app-resultat-trajets>
+<div class="mt-28">
+    <app-resultat-trajets *ngIf="trajets utilisateurs" [trajets]="trajets" 
+    [utilisateurs]="utilisateurs"></app-resultat-trajets>
+<app-top-utilisateurs *ngIf="utilisateurs" [utilisateurs]="utilisateurs" [title]="'Les Utilisateurs Les Plus Rapides'" ></app-top-utilisateurs>
+</div>

@@ -1,8 +1,8 @@
 
 <div class="flex flex-row justify-between bg-slate-200 h-20 items-center px-8">
     <div class="flex flex-row gap-4 text-gray-600">
-        <a href="#" class="hover:text-black">Proposer</a>
-        <a  href="#" class="hover:text-black">Rechercher</a>
+        <a  *ngIf="connected | async" href="#" class="hover:text-black">Proposer</a>
+        <a  routerLink="" routerLinkActive="active" class="hover:text-black">Rechercher</a>
     </div>
 
 
@@ -10,9 +10,15 @@
         <img src="assets/covoiturace-logo.png" class="w-52 bg-slate-200 rounded-b-full p-4 mt-10">
     </div>
 
-    <div class="flex flex-row gap-4 text-gray-600">
-        <a href="#" class="hover:text-black">Login</a>
-        <a  href="#" class="hover:text-black">Register</a>
+
+    <div *ngIf="connected | async" class="flex flex-row gap-4 text-gray-600">
+        <a routerLink="/profile" routerLinkActive="active" class="hover:text-black">Mon Profile</a>
+        <a (click)="logoutClicked()" class="hover:text-black cursor-pointer">Déconnexion</a>
+    </div>
+
+    <div *ngIf="!(connected | async)" class="flex flex-row gap-4 text-gray-600">
+        <a routerLink="/login" routerLinkActive="active" class="hover:text-black">Login</a>
+        <a routerLink="/register" routerLinkActive="active" class="hover:text-black">Register</a>
     </div>
 
 </div>

@@ -1,0 +1,11 @@
+<div class="flex flex-row justify-between w-96 border p-4 rounded-lg bg-slate-100 mx-auto">
+    <span>{{ utilisateur.prenom }}</span>
+    <span>{{ utilisateur.nom }}</span>
+
+    <span>
+        <span *ngFor="let i of [].constructor(flamme); let index = index">
+            🔥
+        </span>
+    </span>
+    <span>{{utilisateur.vitMoyenne}} km/h</span>
+</div>

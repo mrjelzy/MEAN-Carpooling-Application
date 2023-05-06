@@ -12,6 +12,10 @@ import { ResultatTrajetsComponent } from './components/resultat-trajets/resultat
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './components/button/button.component';
+import { UtilisateurItemComponent } from './components/utilisateur-item/utilisateur-item.component';
+import { TopUtilisateursComponent } from './components/top-utilisateurs/top-utilisateurs.component';
+import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { ButtonComponent } from './components/button/button.component';
     TrajetItemComponent,
     ResultatTrajetsComponent,
     HomePageComponent,
-    ButtonComponent
+    ButtonComponent,
+    UtilisateurItemComponent,
+    TopUtilisateursComponent,
+    RegisterPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

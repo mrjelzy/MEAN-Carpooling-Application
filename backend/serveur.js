@@ -1,5 +1,6 @@
 const { json } = require("express");
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 var express = require("express");
 var app = express();
 app.use(cors());
@@ -260,16 +261,36 @@ async function main() //principe de promesse
 			}
 		});
 
-		// RETOURNE RESULTAT=0 SI L'UTILISATEUR EXISTE, 1 SINON
-		app.post("/connexion", async (req,res) => {
-			console.log("/connexion de ", req.body);
-			let document = await db.collection("utilisateurs").find(req.body).toArray();
-			if( document.length == 1){
-				res.json({"resultat" : 0, "message": "Utilisateur déjà existant"});
+		// RETOURNE UN UTILISATEUR EN FONCTION DE L'ID
+		app.get("/utilisateur/:id", async (req, res) => {
+			console.log("/utilisateur:"+req.params.id);
+			let documents = await db.collection("utilisateurs").find({
+				_id: new ObjectId(req.params.id),
+			}).toArray();
+
+			if( documents.length == 1)
+			{
+				res.json(documents);
 			}
 			else{
-				// AJOUTER DANS LES COOKIES
-				res.json({"resultat": 1, "message": "Authentification réussie"});
+				res.json({"resultat" : 0, "message": "Ancun utilisateur avec cet id"});
+			}
+			
+		});
+
+		// RETOURNE RESULTAT=1 AVEC LE TOKEN SI L'UTILISATEUR EXISTE, 0 SINON
+		app.post("/login", async (req,res) => {
+			console.log("/connexion de ", req.body);
+			let user = await db.collection("utilisateurs").find(req.body).toArray();
+			if( user.length == 1)
+			{
+				// Générer un jeton d'authentification (remplacer 'secret' par une clé sha ...)
+				const token = jwt.sign({ email: user.email }, 'secret');
+				// Envoyer le jeton d'authentification au client
+				res.json({ resultat: 1, message: 'Authentification réussie', token});
+			}
+			else{
+				res.json({resultat: 0, message: "Utilisateur inconnu"});
 			}
 		});
 

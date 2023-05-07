@@ -17,6 +17,7 @@ const httpOptions = {
 export class AuthService {
   private apiUrl = 'http://localhost:8888';
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private utilisateur !: Utilisateur | null;
 
   constructor(private http: HttpClient) {}
 
@@ -26,12 +27,21 @@ export class AuthService {
   }
 
   setSession(resultat : Resultat) {
-    this.loggedIn.next(true);
     localStorage.setItem('id_token', resultat.token);
+
+    const url = `${this.apiUrl}/utilisateur`;
+    this.http.get<Utilisateur>(url).subscribe(
+      (utilisateur) => {
+        this.utilisateur = utilisateur;
+        this.loggedIn.next(true);
+      }
+    )
+
   }    
 
   logout() {
     this.loggedIn.next(false);
+    this.utilisateur = null;
     localStorage.removeItem("id_token");
   }
 
@@ -41,6 +51,10 @@ export class AuthService {
 
   getToken(){
     return localStorage.getItem("id_token");
+  }
+
+  getUtilisateur(){
+    return this.utilisateur;
   }
 
 }

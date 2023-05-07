@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Utilisateur } from 'src/app/interfaces/Utilisateur';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,7 +13,7 @@ export class LoginPageComponent implements OnInit {
   email !: string;
   motDePasse !: string;
 
-  constructor(private route: ActivatedRoute, private authService:AuthService){}
+  constructor(private route: ActivatedRoute, private authService:AuthService, private router : Router){}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -42,15 +42,21 @@ export class LoginPageComponent implements OnInit {
       (resultat) => {
         if(resultat.resultat === 1){
           this.authService.setSession(resultat);
+          this.authService.isLoggedIn().subscribe(
+            (bool) => {
+              if(bool)
+                this.router.navigate(['profile']);
+            }
+          )
         }else{
           alert("Mauvais identifiant");
         }
-        console.log(resultat);
       }
     );
 
     this.email = '';
     this.motDePasse = '';
+
   }
 
 }

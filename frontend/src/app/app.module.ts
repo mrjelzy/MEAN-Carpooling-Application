@@ -10,12 +10,15 @@ import { TrajetItemComponent } from './components/trajet-item/trajet-item.compon
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ResultatTrajetsComponent } from './components/resultat-trajets/resultat-trajets.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './components/button/button.component';
 import { UtilisateurItemComponent } from './components/utilisateur-item/utilisateur-item.component';
 import { TopUtilisateursComponent } from './components/top-utilisateurs/top-utilisateurs.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { JwtInterceptor } from './providers/jwt.interceptor';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     UtilisateurItemComponent,
     TopUtilisateursComponent,
     RegisterPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

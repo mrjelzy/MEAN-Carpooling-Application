@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-center font-bold text-slate-600 text-xl mb-10">Mon profil</h2>
+    <h2 class="text-center font-bold text-slate-600 text-xl mb-10">Mon Profil</h2>
     <form class="border-solid border flex flex-col justify-between bg-white w-96 mx-auto" (ngSubmit)="onSubmit()">
         <input  class="p-4 border-b outline-none" 
             type="text" 
@@ -31,4 +31,23 @@
     
         <input class="bg-blue-600 text-white p-4 " type="submit" value="Modifier le profil"/>
     </form>
+</div>
+<div *ngIf="getVitesse()" class="absolute right-24 top-56 border rounded-full p-8">
+    <p class="text-center font-bold text-slate-600 text-xl">
+        Vitesse Moyenne
+    </p>
+    <p class="text-center font-bold text-black text-3xl mt-2">
+        {{ utilisateur?.vitMoyenne }} km/h
+    </p>
+</div>
+
+<div *ngIf="getVitesse()" class="absolute left-24 top-56 border rounded-full p-8">
+    <p class="text-center font-bold text-slate-600 text-xl">
+        Les Flammes
+    </p>
+    <p class="text-center font-bold text-3xl mt-2">
+        <span *ngFor="let i of [].constructor(flamme); let index = index">
+            🔥
+        </span>
+    </p>
 </div>

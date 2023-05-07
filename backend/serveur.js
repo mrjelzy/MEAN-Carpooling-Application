@@ -111,6 +111,35 @@ async function main() //principe de promesse
 			
 		});
 
+		// RETOURNE LES TRAJETS DONT UN UTILISATEUR PARTICIPE
+		app.get("/my-trajets-passager", async (req, res) => {
+			console.log("/my-trajets-passager:");
+
+			let tokenData
+
+			try{
+				const token = req.headers.authorization.split(' ')[1];
+				tokenData = jwt.verify(token, "secret");
+				console.log("Adresse e-mail de l'utilisateur : " + tokenData.email);
+			}
+			catch{
+				res.json({"resultat" : 0, "message": "Token d'authentification invalide"});
+			}
+
+			let documents = await db.collection("trajets").find({
+				passagers: tokenData.email
+			}).toArray();
+
+			if( documents.length >= 1)
+			{
+				res.json(documents);
+			}
+			else{
+				res.json({"resultat" : 0, "message": "Ancun trajet pour l'utilisateur : " + tokenData.email});
+			}
+			
+		});
+
 		// AJOUTE UN TRAJET
 		app.post("/add-trajet", async (req, res) => {
 			console.log("/add-trajet");

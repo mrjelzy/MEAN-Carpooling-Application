@@ -19,7 +19,7 @@
         "passagers":[],
         "prix": 25,
         "heureDepart": "14:30",
-        "heureArrive": null
+        "heureArrive": "15:30"
     },
     {
         "villeDepart": "Bordeaux",

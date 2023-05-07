@@ -1,7 +1,7 @@
 import { Types } from 'mongoose';
 
 export interface Trajet {
-    id?: Types.ObjectId;
+    _id?: Types.ObjectId;
     villeDepart: string;
     villeArrive: string;
     date: string;

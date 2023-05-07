@@ -16,11 +16,16 @@ export class ProfileComponent implements OnInit{
   tel !: string;
   
   utilisateur !: Utilisateur | null;
+  flamme: number = 1;
 
   constructor(private authService: AuthService, private utilisateurService: UtilisateursService){}
 
   ngOnInit(): void {
     this.utilisateur = this.authService.getUtilisateur();
+
+    const vitesse = this.utilisateur?.vitMoyenne;
+    if(vitesse)
+      this.flamme = Math.floor( vitesse / 50);
 
     this.nom = this.utilisateur ? this.utilisateur.nom : '' ;
     this.prenom = this.utilisateur ? this.utilisateur.prenom : '' ;
@@ -69,6 +74,10 @@ export class ProfileComponent implements OnInit{
       vitMoyenne: 0
     }
     */
+  }
 
+  getVitesse(){
+    return this.utilisateur ? this.utilisateur.vitMoyenne > 0 : false;
   }
 }
+

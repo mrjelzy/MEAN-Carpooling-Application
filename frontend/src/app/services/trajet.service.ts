@@ -34,5 +34,10 @@ export class TrajetService {
     const url = `${this.apiUrl}/my-trajets`;
     return this.http.get<Trajet[]>(url);
   }
+
+  getMyTrajetsPassager() : Observable<Trajet[]>{
+    const url = `${this.apiUrl}/my-trajets-passager`;
+    return this.http.get<Trajet[]>(url);
+  }
   
 }

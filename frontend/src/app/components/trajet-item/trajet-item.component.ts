@@ -32,4 +32,12 @@ export class TrajetItemComponent implements OnInit{
   onClick(){
     this.btnClick.emit();
   }
+
+  formatDate(dateString : string) : string{
+    const year = dateString.slice(0, 2);
+    const month = dateString.slice(2, 4);
+    const day = dateString.slice(4, 6);
+    
+    return `${day}/${month}/${year}`;
+  }
 }

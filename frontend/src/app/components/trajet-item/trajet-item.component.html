@@ -36,8 +36,18 @@
                 {{ trajetAvecConducteur.trajet.heureDepart }}
             </p>
 
-            <div class="{{ colorButton }} text-white p-2 rounded-lg">
-                <app-button [text]="labelButton" (btnClick)="onClick()"></app-button>
-            </div>
+            <p class="font-bold text-slate-600">
+                {{ formatDate(trajetAvecConducteur.trajet.date) }}
+            </p>
+
+            <p *ngIf="(trajetAvecConducteur.trajet.heureArrive !== null)"  class="font-bold text-slate-600">
+                {{ trajetAvecConducteur.trajet.heureArrive }}
+            </p>
+            <span *ngIf="colorButton !== undefined">
+                <div *ngIf="(trajetAvecConducteur.trajet.heureArrive === null)" class="{{ colorButton }} text-white p-2 rounded-lg" #elseBlock>
+                    <app-button [text]="labelButton" (btnClick)="onClick()"></app-button>
+                </div>
+            </span>
+
         </div>
     </div>

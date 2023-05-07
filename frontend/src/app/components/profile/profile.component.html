@@ -1,5 +1,34 @@
-<p>{{ utilisateur?.nom }}</p>
-<p>{{ utilisateur?.prenom }}</p>
-<p>{{ utilisateur?.email }}</p>
-<p>{{ utilisateur?.telephone }}</p>
-<p>{{ utilisateur?.vitMoyenne }} Km/h</p>
+<div>
+    <h2 class="text-center font-bold text-slate-600 text-xl mb-10">Mon profil</h2>
+    <form class="border-solid border flex flex-col justify-between bg-white w-96 mx-auto" (ngSubmit)="onSubmit()">
+        <input  class="p-4 border-b outline-none" 
+            type="text" 
+            name="nom" 
+            id="nom"
+            [(ngModel)]="nom"
+            placeholder="Nom">
+        <input class="p-4 border-b outline-none " 
+            type="text" 
+            name="prenom" 
+            id="prenom" 
+            [(ngModel)]="prenom"
+            placeholder="Prenom">
+    
+        <input class="p-4 border-b outline-none " 
+            type="text" 
+            name="email" 
+            id="email" 
+            [(ngModel)]="email"
+            placeholder="Email"
+            disabled>
+    
+        <input class="p-4 border-b outline-none " 
+            type="tel" 
+            name="telephone" 
+            id="telephone" 
+            [(ngModel)]="tel"
+            placeholder="Numéro de Téléphone">
+    
+        <input class="bg-blue-600 text-white p-4 " type="submit" value="Modifier le profil"/>
+    </form>
+</div>

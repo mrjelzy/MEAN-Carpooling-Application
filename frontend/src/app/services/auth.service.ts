@@ -29,8 +29,8 @@ export class AuthService {
   setSession(resultat : Resultat) {
     localStorage.setItem('id_token', resultat.token);
 
-    const url = `${this.apiUrl}/utilisateur`;
-    this.http.get<Utilisateur>(url).subscribe(
+
+    this.setUtilisateur().subscribe(
       (utilisateur) => {
         this.utilisateur = utilisateur;
         this.loggedIn.next(true);
@@ -55,6 +55,18 @@ export class AuthService {
 
   getUtilisateur(){
     return this.utilisateur;
+  }
+
+  setUtilisateur() : Observable<Utilisateur>{
+    const url = `${this.apiUrl}/utilisateur`;
+    return this.http.get<Utilisateur>(url);
+  }
+
+  updateUtilisateur(utilisateur : Utilisateur){
+    if(utilisateur !== this.utilisateur){
+      this.setUtilisateur().subscribe(
+        (user) => this.utilisateur = user)
+    }
   }
 
 }

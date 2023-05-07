@@ -98,7 +98,7 @@ async function main() //principe de promesse
 			}
 
 			let documents = await db.collection("trajets").find({
-				email: tokenData.email,
+				email: tokenData.email
 			}).toArray();
 
 			if( documents.length >= 1)
@@ -280,25 +280,21 @@ async function main() //principe de promesse
 				.updateOne({ email: tokenData.email }, { $set: utilisateur });
 		
 			if (result.modifiedCount === 1) {
-				// Générer un jeton d'authentification (remplacer 'secret' par une clé sha ...)
-				const token = jwt.sign({ email: req.body.email }, 'secret');
-
 				res.json({
 				resultat: 1,
-				message: "Utilisateur modifié",
-				token
+				message: "Utilisateur modifié"
 				});
 			} else {
 				res.json({
 				resultat: 0,
-				message: "Aucun utilisateur n'a été modifié",
+				message: "Aucun utilisateur n'a été modifié"
 				});
 			}
 			} catch (error) {
 			console.error(error);
 			res.status(500).json({
 				resultat: 0,
-				message: "Erreur lors de la modification de l'utilisateur",
+				message: "Erreur lors de la modification de l'utilisateur"
 			});
 			}
 		});

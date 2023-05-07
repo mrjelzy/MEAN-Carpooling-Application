@@ -295,7 +295,7 @@ async function main() //principe de promesse
 		});
 
 		// RETOURNE UN UTILISATEUR EN FONCTION DU TOKEN
-		app.post("/utilisateur", async (req, res) => {
+		app.get("/utilisateur", async (req, res) => {
 			console.log("/utilisateur "+req.headers.authorization);
 
 			let tokenData

@@ -95,16 +95,27 @@ async function main() //principe de promesse
 			}
 		});
 
-		//AJOUTE UN UTILISATEURS A UN TRAJET
+		// RESERVATION TRAJET
 		app.patch("/add-passager/:id", async (req, res) => {
 			console.log("/add-passager/" + req.params.id);
+
+			let tokenData
+
+			try{
+				const token = req.headers.authorization.split(' ')[1];
+				tokenData = jwt.verify(token, "secret");
+				console.log("Adresse e-mail de l'utilisateur : " + tokenData.email);
+			}
+			catch{
+				res.json({"resultat" : 0, "message": "Token d'authentification invalide"});
+			}
 		
 			try {
 			// Mettre à jour le trajet qui correspond à l'ID fourni dans la requête avec l'email présent dans le request
 			const result = await db
 				.collection("trajets")
 				.updateOne({ _id: new ObjectId(req.params.id) },
-					{ $push: { "passagers": req.body.email } });
+					{ $push: { "passagers": tokenData.email } });
 		
 			if (result.modifiedCount === 1) {
 				res.json({
@@ -114,7 +125,7 @@ async function main() //principe de promesse
 			} else {
 				res.json({
 				resultat: 0,
-				message: "Aucun trajet n'a été modifié",
+				message: "Aucun trajet n'a été trouvé",
 				});
 			}
 			} catch (error) {
@@ -218,20 +229,35 @@ async function main() //principe de promesse
 		});
 
 		// MODIFIE UN UTILISATEUR
-		app.patch("/patch-utilisateur/:id", async (req, res) => {
-			console.log("/patch-utilisateur/" + req.params.id);
+		app.patch("/patch-utilisateur", async (req, res) => {
+			console.log("/patch-utilisateur");
 			const utilisateur = req.body;
+
+			let tokenData
+
+			try{
+				const token = req.headers.authorization.split(' ')[1];
+				tokenData = jwt.verify(token, "secret");
+				console.log("Adresse e-mail de l'utilisateur : " + tokenData.email);
+			}
+			catch{
+				res.json({"resultat" : 0, "message": "Token d'authentification invalide"});
+			}
 		
 			try {
 			// Mettre à jour l'utilisateur dans la collection "utilisateurs" qui correspond à l'ID fourni dans la requête
 			const result = await db
 				.collection("utilisateurs")
-				.updateOne({ _id: new ObjectId(req.params.id) }, { $set: utilisateur });
+				.updateOne({ email: tokenData.email }, { $set: utilisateur });
 		
 			if (result.modifiedCount === 1) {
+				// Générer un jeton d'authentification (remplacer 'secret' par une clé sha ...)
+				const token = jwt.sign({ email: req.body.email }, 'secret');
+
 				res.json({
 				resultat: 1,
 				message: "Utilisateur modifié",
+				token
 				});
 			} else {
 				res.json({

@@ -23,6 +23,11 @@ export class UtilisateursService {
     return this.http.get<Utilisateur[]>(url);
   }
 
+  patchUtilisateur(utilisateur: Utilisateur): Observable<Resultat> {
+    const url = `${this.apiUrl}/patch-utilisateur`;
+    return this.http.patch<Resultat>(url, utilisateur, httpOptions);
+  }
+
   addUtilisateur(utilisateur: Utilisateur): Observable<Resultat> {
     const url = `${this.apiUrl}/add-utilisateur`;
     return this.http.post<Resultat>(url, utilisateur, httpOptions);

@@ -22,7 +22,6 @@ export class HomePageComponent implements OnInit {
       (utilisateurs) => {
         this.utilisateurs = utilisateurs;
     });
-
   }
 
   onSearch(search: Search) {

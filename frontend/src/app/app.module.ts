@@ -18,6 +18,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { JwtInterceptor } from './providers/jwt.interceptor';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TrajetsPageComponent } from './components/trajets-page/trajets-page.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     TopUtilisateursComponent,
     RegisterPageComponent,
     LoginPageComponent,
-    ProfileComponent
+    ProfileComponent,
+    TrajetsPageComponent
   ],
   imports: [
     BrowserModule,

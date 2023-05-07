@@ -5,11 +5,13 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './providers/auth.guard';
+import { TrajetsPageComponent } from './components/trajets-page/trajets-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'trajets', component: TrajetsPageComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]  }
 ];
 

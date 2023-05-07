@@ -15,17 +15,23 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TrajetService {
-  private apiUrl = 'http://localhost:8888/trajets';
+  private apiUrl = 'http://localhost:8888';
 
 
   constructor(private http: HttpClient) {}
 
   getTrajets() : Observable<Trajet[]>{
-    return this.http.get<Trajet[]>(this.apiUrl);
+    const url = `${this.apiUrl}/trajets`;
+    return this.http.get<Trajet[]>(url);
   }
 
   getTrajetsAvecFiltre(search: Search) : Observable<Trajet[]>{
-    const url = `${this.apiUrl}/${search.villeDepart}/${search.villeArrive}/${search.date}`;
+    const url = `${this.apiUrl}/trajets/${search.villeDepart}/${search.villeArrive}/${search.date}`;
+    return this.http.get<Trajet[]>(url);
+  }
+
+  getMyTrajets() : Observable<Trajet[]>{
+    const url = `${this.apiUrl}/my-trajets`;
     return this.http.get<Trajet[]>(url);
   }
   

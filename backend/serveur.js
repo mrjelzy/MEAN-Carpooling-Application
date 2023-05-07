@@ -101,7 +101,7 @@ async function main() //principe de promesse
 				email: tokenData.email,
 			}).toArray();
 
-			if( documents.length == 1)
+			if( documents.length >= 1)
 			{
 				res.json(documents);
 			}

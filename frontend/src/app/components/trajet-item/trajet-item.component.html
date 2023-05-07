@@ -36,8 +36,8 @@
                 {{ trajetAvecConducteur.trajet.heureDepart }}
             </p>
 
-            <div class="bg-blue-600 text-white p-2 rounded-lg">
-                <button type="submit">Reserver</button>
+            <div class="{{ colorButton }} text-white p-2 rounded-lg">
+                <app-button [text]="labelButton" (btnClick)="onClick()"></app-button>
             </div>
         </div>
     </div>

@@ -25,4 +25,8 @@ export class ResultatTrajetsComponent implements OnInit {
         .filter(({ conducteur }) => conducteur !== undefined);
   }
 
+  reserverTrajet(){
+    
+  }
+
 }

@@ -169,7 +169,7 @@ async function main() //principe de promesse
 			}
 		
 			try {
-			// Mettre à jour le trajet qui correspond à l'ID fourni dans la requête avec l'email présent dans le request
+			// Mettre à jour le trajet qui correspond à l'ID fourni dans la requête avec l'email du token
 			const result = await db
 				.collection("trajets")
 				.updateOne({ _id: new ObjectId(req.params.id) },

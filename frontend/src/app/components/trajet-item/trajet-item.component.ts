@@ -2,6 +2,7 @@ import { Component, EventEmitter, INJECTOR, Input, OnInit, Output } from '@angul
 import { faFire, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Trajet } from 'src/app/interfaces/Trajet';
 import { Utilisateur } from 'src/app/interfaces/Utilisateur';
+import { AuthService } from 'src/app/services/auth.service';
 
 type TrajetAvecConducteur = { trajet: Trajet, conducteur: Utilisateur | undefined};
 
@@ -11,6 +12,7 @@ type TrajetAvecConducteur = { trajet: Trajet, conducteur: Utilisateur | undefine
   styleUrls: ['./trajet-item.component.css']
 })
 export class TrajetItemComponent implements OnInit{
+  utilisateur !: Utilisateur | null;
   @Input() labelButton !: string;
   @Input() colorButton !: string;
   @Input() trajetAvecConducteur !: TrajetAvecConducteur;
@@ -20,10 +22,11 @@ export class TrajetItemComponent implements OnInit{
   faFire = faFire;
   faArrowRight = faArrowRight;
 
-  constructor() {
+  constructor(private authService :AuthService) {
   }
 
   ngOnInit(): void {
+    this.utilisateur = this.authService.getUtilisateur();
     const vitesse = this.trajetAvecConducteur.conducteur?.vitMoyenne;
     if(vitesse)
       this.flamme = Math.floor( vitesse / 50);

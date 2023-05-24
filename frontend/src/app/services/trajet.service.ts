@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trajet } from '../interfaces/Trajet';
 import { Search } from '../interfaces/Search';
+import { Resultat } from '../interfaces/Resultat';
+import { Types } from 'mongoose';
 
 
 const httpOptions = {
@@ -38,6 +40,11 @@ export class TrajetService {
   getMyTrajetsPassager() : Observable<Trajet[]>{
     const url = `${this.apiUrl}/my-trajets-passager`;
     return this.http.get<Trajet[]>(url);
+  }
+
+  patchReservation(id : Types.ObjectId) : Observable<Resultat>{
+    const url = `${this.apiUrl}/add-passager/${id}`;
+    return this.http.patch<Resultat>(url, {});
   }
   
 }

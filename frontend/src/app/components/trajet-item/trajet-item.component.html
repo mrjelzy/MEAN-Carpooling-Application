@@ -43,11 +43,14 @@
             <p *ngIf="(trajetAvecConducteur.trajet.heureArrive !== null)"  class="font-bold text-slate-600">
                 {{ trajetAvecConducteur.trajet.heureArrive }}
             </p>
+            <span *ngIf="utilisateur">
             <span *ngIf="colorButton !== undefined">
                 <div *ngIf="(trajetAvecConducteur.trajet.heureArrive === null)" class="{{ colorButton }} text-white p-2 rounded-lg" #elseBlock>
                     <app-button [text]="labelButton" (btnClick)="onClick()"></app-button>
                 </div>
             </span>
+            </span>
+        
 
         </div>
     </div>

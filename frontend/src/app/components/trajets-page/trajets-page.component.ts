@@ -3,7 +3,6 @@ import { Trajet } from 'src/app/interfaces/Trajet';
 import { Utilisateur } from 'src/app/interfaces/Utilisateur';
 import { AuthService } from 'src/app/services/auth.service';
 import { TrajetService } from 'src/app/services/trajet.service';
-import { Types } from 'mongoose';
 import { UtilisateursService } from 'src/app/services/utilisateurs.service';
 
 type TrajetAvecConducteur = { trajet: Trajet, conducteur: Utilisateur | undefined };

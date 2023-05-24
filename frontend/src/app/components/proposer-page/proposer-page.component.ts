@@ -56,7 +56,7 @@ export class ProposerPageComponent implements OnInit{
           passagers: [],
           prix: this.prix,
           heureDepart: this.hDep,
-          heureArrive: ''
+          heureArrive: null
         }
       
 

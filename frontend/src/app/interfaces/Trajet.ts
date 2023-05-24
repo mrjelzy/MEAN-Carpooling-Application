@@ -10,5 +10,5 @@ export interface Trajet {
     passagers: string[];
     prix: number;
     heureDepart: string;
-    heureArrive: string;
+    heureArrive: string | null;
   }

@@ -1,0 +1,7 @@
+{
+    "/osrm/*": {
+        "target": "http://router.project-osrm.org/route/v1/car",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

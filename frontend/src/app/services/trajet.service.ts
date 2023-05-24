@@ -46,5 +46,10 @@ export class TrajetService {
     const url = `${this.apiUrl}/add-passager/${id}`;
     return this.http.patch<Resultat>(url, {});
   }
+
+  patchEndTrajet(id : Types.ObjectId, trajet: Trajet) : Observable<Resultat>{
+    const url = `${this.apiUrl}/end-trajet/${id}`;
+    return this.http.patch<Resultat>(url, trajet);
+  }
   
 }

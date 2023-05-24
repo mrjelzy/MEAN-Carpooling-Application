@@ -1,0 +1,47 @@
+<div>
+    <h2 class="text-center font-bold text-slate-600 text-xl mb-10">Proposer un trajet</h2>
+    <form class="border-solid border flex flex-col justify-between bg-white w-96 mx-auto" (ngSubmit)="onSubmit()">
+        <input  class="p-4 border-b outline-none" 
+            type="text" 
+            name="villeDep" 
+            id="villeDep"
+            [(ngModel)]="villeDep"
+            placeholder="Ville de départ">
+        <input class="p-4 border-b outline-none " 
+            type="text" 
+            name="villeArr" 
+            id="villeArr" 
+            [(ngModel)]="villeArr"
+            placeholder="Ville d'arrivé">
+    
+        <input class="p-4 border-b outline-none " 
+            type="date" 
+            name="date" 
+            id="date" 
+            [(ngModel)]="date"
+            placeholder="Date de départ">
+    
+        <input class="p-4 border-b outline-none " 
+            type="number" 
+            name="nbPlaces" 
+            id="nbPlaces" 
+            [(ngModel)]="nbPlaces"
+            placeholder="Nombres de places libres">
+
+        <input class="p-4 border-b outline-none " 
+            type="number" 
+            name="prix" 
+            id="prix" 
+            [(ngModel)]="prix"
+            placeholder="Prix par personnes">
+
+        <input class="p-4 border-b outline-none " 
+            type="time"
+            name="hDep" 
+            id="hDep" 
+            [(ngModel)]="hDep"
+            placeholder="Heure de départ">
+    
+        <input class="bg-blue-600 text-white p-4 " type="submit" value="Poser une annonce"/>
+    </form>
+</div>

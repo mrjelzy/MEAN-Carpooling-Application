@@ -1,7 +1,7 @@
 
 <div class="flex flex-row justify-between bg-slate-200 h-20 items-center px-8">
     <div class="flex flex-row gap-4 text-gray-600">
-        <a  *ngIf="connected | async" class="hover:text-black cursor-pointer">Proposer</a>
+        <a  routerLink="/proposer" routerLinkActive="active" *ngIf="connected | async" class="hover:text-black cursor-pointer">Proposer</a>
         <a  routerLink="/trajets" routerLinkActive="active" *ngIf="connected | async" class="hover:text-black cursor-pointer">Mes Trajets</a>
         <a  routerLink="" routerLinkActive="active" class="hover:text-black">Rechercher</a>
     </div>
